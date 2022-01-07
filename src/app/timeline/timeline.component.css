@@ -1,0 +1,49 @@
+                        /* general */
+:host{
+    position: relative;
+}
+h2, h3{
+    font-family: Inter;
+    font-weight: 200;
+    color: #fff;
+}
+h2{
+    font-size: 2em;
+}
+h3{
+    font-size: 2.2em;
+}
+img{
+     width: 6em;
+    }
+
+                        /* cards*/
+.cards{
+    position: relative;
+    margin:2rem auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.card{
+    padding: 1rem;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 10%;
+}
+
+@media(max-width: 1000px){
+    .cards{
+        width: 80%;
+    }
+}
+@media(max-width: 780px){
+    .cards{
+        width: 90%;
+    }
+}
+@media(max-width: 430px){
+    .cards{
+        width: 90%;
+        font-size: 3vw;
+    }
+}

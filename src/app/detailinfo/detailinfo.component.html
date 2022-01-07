@@ -1,0 +1,16 @@
+<div class="container" #container>
+    <div class="am">
+        <div *ngFor="let hour of am" class="hour-info">
+            <p>{{hour}}</p>
+            <p><span>{{info}}</span></p>
+        </div>
+    </div>
+   <div class="pm">
+    <div *ngFor="let houri of pm">
+        <p>{{houri}}</p>
+        <p>info</p>
+    </div>
+   </div>
+</div>
+<button (click)="slideLeft()" class="left"> </button>    
+<button (click)="slideRight()" class="right"></button>   

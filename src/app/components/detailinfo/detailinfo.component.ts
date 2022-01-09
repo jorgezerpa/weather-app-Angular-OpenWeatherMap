@@ -1,27 +1,28 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-detailinfo',
   templateUrl: './detailinfo.component.html',
   styleUrls: ['./detailinfo.component.css']
 })
-export class DetailinfoComponent implements OnInit {
+export class DetailinfoComponent implements OnInit, OnChanges {
   info:string="info";
   am:string[]=[];
   pm:string[]=[];
   @ViewChild("container") container?:ElementRef;
+  @Input() buttonId?:number;
+  dataToshow?:any;
+  a:any[]=[];
+  @Input() hourlyData:any;
 
   constructor() { }
 
   ngOnInit(): void {
     this.generateHours();
   }
-
-  //IMPORTANT! add cause' container element exist AFTER view load, not during. 
-  //by any way, this is just for test, cause' You will call the fuction by click a button (it means, after view laod) 
-  //you can delete this function, is just for education.
-  ngAfterViewInit(){      
-    console.log(this.container)
+  ngOnChanges(changes: SimpleChanges): void {
+    this.selectInfo()
+    
   }
 
   generateHours(){
@@ -38,4 +39,59 @@ export class DetailinfoComponent implements OnInit {
   slideLeft(){
     this.container?.nativeElement.classList.remove("moved")  
   }
+
+  takeTemperature(){
+    this.a=[];
+    for(let i=0; i<this.hourlyData.length/2; i++){
+      this.a.push(this.hourlyData[i].temp)
+    }
+  }
+  takeHumidity(){
+    this.a=[];
+    for(let i=0; i<this.hourlyData.length/2; i++){
+      this.a.push(this.hourlyData[i].humidity)
+    }
+  }
+  takeRain(){
+    this.a=[];
+    for(let i=0; i<this.hourlyData.length/2; i++){
+      this.a.push(this.hourlyData[i].pop)
+    }
+  }
+  takeWind(){
+    this.a=[];
+    for(let i=0; i<this.hourlyData.length/2; i++){
+      this.a.push(this.hourlyData[i].wind_speed)
+    }
+  }
+  takeUvi(){
+    this.a=[];
+    for(let i=0; i<this.hourlyData.length/2; i++){
+      this.a.push(this.hourlyData[i].uvi)
+    }
+  }
+  takePressure(){
+    this.a=[];
+    for(let i=0; i<this.hourlyData.length/2; i++){
+      this.a.push(this.hourlyData[i].pressure)
+    }
+  }
+
+  selectInfo(){
+    switch(this.buttonId){
+      case 1: this.takeTemperature();
+      break;
+      case 2: this.takeHumidity()
+      break;
+      case 3: this.takeRain()
+      break;
+      case 4: this.takeWind()
+      break;
+      case 5: this.takeUvi()
+      break;
+      case 6: this.takePressure()
+      break;
+    }
+  }
+
 }

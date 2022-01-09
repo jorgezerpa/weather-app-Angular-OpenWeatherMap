@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { getDataService } from 'src/app/services/getDataService';
-import { Info } from 'src/app/entities/info';
+import { getLocationService } from 'src/app/services/location.service';
+import { getCurrentForecastDataService } from 'src/app/services/getCurrentForecastData.service';
+import { convertService } from 'src/app/services/convert.service';
+import { getPastDataService } from 'src/app/services/getPast.service';
 
 @Component({
   selector: 'app-principal',
@@ -8,42 +10,37 @@ import { Info } from 'src/app/entities/info';
   styleUrls: ['./principal.component.css']
 })
 
-
 export class PrincipalComponent implements OnInit {
-  Info:Info={
-    ubication:"",
-    image:"",
-    temperature:0,
-    date:"",
-    day:"",
-    hour:"",
-    wind:0,
-    humedity:0,
-    rain:0,
-  };
+  date:number=1641728542;
+  city:string="cuba";
+  cityPackage:any;
+  currentForecastPackage:any;
+  historicalPackage:any;
 
 
-  constructor(private getDataService: getDataService) { }
+  constructor(
+    private getLocation:getLocationService,
+    private getCurrentForecast: getCurrentForecastDataService,
+    private getPast: getPastDataService,
+    private convert: convertService
+    ) { }
 
   ngOnInit(): void {
-    this.getData()
-  }
+            this.location()
+    }
+
+                //get Info to distribute to Child components
+    location(){
+      this.getLocation.search(this.city).subscribe(city=>{
+            this.cityPackage=city;
+            this.city=city[0].name;
+            this.getCurrentForecast.getCurrent(city[0].lat, city[0].lon).subscribe(data=>{
+                this.currentForecastPackage=data;
+            })
+            this.getPast.getPast(city[0].lat, city[0].lon, this.date-86400).subscribe(data=>{
+                this.historicalPackage=data;
+            })
+      })
+    }
   
-  getData(){
-    this.getDataService.getHistorical().subscribe(data=>{
-      console.log(data);
-      let h="1h";
-      this.Info.ubication="";
-      this.Info.image="../../assets/icons/1.svg", //SOLVE: display different image in function to weather data
-      this.Info.temperature=data.current.temp;
-      this.Info.date= data.current.dt; //modify it
-      this.Info.day=data.current.dt; //modify it 
-      this.Info.hour=data.current.dt; //modify it;
-      this.Info.wind=data.current.wind_speed;
-      this.Info.humedity=data.current.humidity;
-      this.Info.rain=data.daily[0].pop;
-    });
-  }
-
-
 }

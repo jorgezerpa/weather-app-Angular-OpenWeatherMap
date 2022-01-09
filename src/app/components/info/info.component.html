@@ -1,15 +1,15 @@
-<div class="container">
-    <h3>{{Info.ubication}}</h3>
-    <img src="{{Info.image}}">
-    <h2>{{Info.temperature}}°</h2>
-    <h3>{{Info.date}}</h3>
-    <p>{{Info.day}} | {{Info.hour}}</p>
+<div class="container" *ngIf="currentForecastPackage">
+    <h3>{{ubication}}</h3>
+    <img src="{{image}}">
+    <h2>{{temperature}}°</h2>
+    <h3>{{date}}</h3>
 </div>
-    <p class="lowbar">
-        <span>wind: {{Info.wind}}</span>
+
+    <p class="lowbar" *ngIf="currentForecastPackage">
+        <span>wind: {{wind}}</span>
         |
-        <span>humedity: {{Info.humedity}}</span>
+        <span>humedity: {{humidity}}</span>
         |
-        <span>rain: {{Info.rain}}</span>
+        <!-- <span>rain: {{rain}}</span> -->
     </p>
 

@@ -1,14 +1,14 @@
 <div class="container" #container>
     <div class="am">
-        <div *ngFor="let hour of am" class="hour-info">
+        <div *ngFor="let hour of am; index as i" class="hour-info">
             <p>{{hour}}</p>
-            <p><span>{{info}}</span></p>
+            <p *ngIf="a" ><span>{{a[i]}}</span></p>
         </div>
     </div>
    <div class="pm">
-    <div *ngFor="let houri of pm">
+    <div *ngFor="let houri of pm; index as i">
         <p>{{houri}}</p>
-        <p>info</p>
+        <p *ngIf="a"><span>{{a[i]}}</span></p>
     </div>
    </div>
 </div>

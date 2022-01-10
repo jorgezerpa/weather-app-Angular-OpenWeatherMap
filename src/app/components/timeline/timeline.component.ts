@@ -11,15 +11,12 @@ export class TimelineComponent implements OnInit, OnChanges {
   @Input() currentForecastPackage:any;
   @Input() historicalPackage:any;
 
-  current_image:string="../../assets/icons/rain.svg";
   current_temp?:number;
   current_date?:string;
 
-  tom_image:string="../../assets/icons/wind.svg";
   tom_temp?:number;
   tom_date?:string;
 
-  yes_image:string="../../assets/icons/uve.svg";
   yes_temp?:number;
   yes_date?:string;
 

@@ -1,17 +1,14 @@
 <div class="cards">
     <div class="card yesterday">
-        <h2>{{yes_temp}}</h2>
-        <img src="{{yes_image}}">
+        <h2>{{yes_temp}}°</h2>
         <h3 *ngIf="yes_date">{{yes_date.slice(0,3)}}</h3>
     </div>
     <div class="card today">
-        <h2>{{current_temp}}</h2>
-        <img src="{{current_image}}">
+        <h2>{{current_temp}}°</h2>
         <h3 *ngIf="current_date">{{current_date.slice(0,3)}}</h3>
     </div>
     <div class="card tomorrow">
-        <h2>{{tom_temp}}</h2>
-        <img src="{{tom_image}}">
+        <h2>{{tom_temp}}°</h2>
         <h3 *ngIf="tom_date">{{tom_date.slice(0,3)}}</h3>
     </div>
 </div>

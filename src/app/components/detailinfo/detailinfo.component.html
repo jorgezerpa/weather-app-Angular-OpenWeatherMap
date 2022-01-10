@@ -2,13 +2,13 @@
     <div class="am">
         <div *ngFor="let hour of am; index as i" class="hour-info">
             <p>{{hour}}</p>
-            <p *ngIf="a" ><span>{{a[i]}}</span></p>
+            <p *ngIf="a" ><span>{{a[i]}} {{simbol}}</span></p>
         </div>
     </div>
    <div class="pm">
     <div *ngFor="let houri of pm; index as i">
         <p>{{houri}}</p>
-        <p *ngIf="a"><span>{{a[i]}}</span></p>
+        <p *ngIf="a"><span>{{a[i]}} {{simbol}}</span></p>
     </div>
    </div>
 </div>

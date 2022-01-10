@@ -1,5 +1,5 @@
 <section>
-   
+<input type="text" [(ngModel)]="city" (change)="location()">   
     <app-info class="app-info"
         [ubication]="city"
         [currentForecastPackage]="currentForecastPackage"

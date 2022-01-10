@@ -1,15 +1,14 @@
 <div class="container" *ngIf="currentForecastPackage">
     <h3>{{ubication}}</h3>
-    <img src="{{image}}">
     <h2>{{temperature}}°</h2>
     <h3>{{date}}</h3>
 </div>
 
     <p class="lowbar" *ngIf="currentForecastPackage">
-        <span>wind: {{wind}}</span>
+        <span>wind: {{wind}}km/h</span>
         |
-        <span>humedity: {{humidity}}</span>
+        <span>humedity: {{humidity}}%</span>
         |
-        <!-- <span>rain: {{rain}}</span> -->
+        <span>rain: {{rain}}%</span>
     </p>
 

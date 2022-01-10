@@ -12,7 +12,8 @@ import { getPastDataService } from 'src/app/services/getPast.service';
 
 export class PrincipalComponent implements OnInit {
   date:number=1641728542;
-  city:string="cuba";
+  city:string="venezuela";
+  citiesToshow:any[]=[];
   cityPackage:any;
   currentForecastPackage:any;
   historicalPackage:any;
@@ -33,6 +34,9 @@ export class PrincipalComponent implements OnInit {
     location(){
       this.getLocation.search(this.city).subscribe(city=>{
             this.cityPackage=city;
+            this.citiesToshow=[];
+            for(let i=0; i<5; i++)this.citiesToshow.push(city[i]);
+            console.log(this.citiesToshow);
             this.city=city[0].name;
             this.getCurrentForecast.getCurrent(city[0].lat, city[0].lon).subscribe(data=>{
                 this.currentForecastPackage=data;

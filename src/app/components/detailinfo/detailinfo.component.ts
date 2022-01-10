@@ -9,6 +9,7 @@ export class DetailinfoComponent implements OnInit, OnChanges {
   info:string="info";
   am:string[]=[];
   pm:string[]=[];
+  simbol:string="";
   @ViewChild("container") container?:ElementRef;
   @Input() buttonId?:number;
   dataToshow?:any;
@@ -80,16 +81,22 @@ export class DetailinfoComponent implements OnInit, OnChanges {
   selectInfo(){
     switch(this.buttonId){
       case 1: this.takeTemperature();
+      this.simbol="°"
       break;
-      case 2: this.takeHumidity()
+      case 2: this.takeHumidity();
+      this.simbol="%"
       break;
-      case 3: this.takeRain()
+      case 3: this.takeRain();
+      this.simbol="%"
       break;
-      case 4: this.takeWind()
+      case 4: this.takeWind();
+      this.simbol="km/h"
       break;
-      case 5: this.takeUvi()
+      case 5: this.takeUvi();
+      this.simbol="%"
       break;
-      case 6: this.takePressure()
+      case 6: this.takePressure();
+      this.simbol="hPa"
       break;
     }
   }

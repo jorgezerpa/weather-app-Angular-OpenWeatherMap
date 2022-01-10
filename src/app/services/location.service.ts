@@ -16,6 +16,6 @@ export class getLocationService {
     ){ }
 
   search(name:string):Observable<any>{
-    return this.http.get("https://api.openweathermap.org/geo/1.0/direct?q="+name+"&limit=1&appid=08c76ae8a032cfda2404ed64d740eab7");  
+    return this.http.get("https://api.openweathermap.org/geo/1.0/direct?q="+name+"&limit=5&appid=08c76ae8a032cfda2404ed64d740eab7");  
   }
 }

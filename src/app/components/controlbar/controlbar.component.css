@@ -25,6 +25,9 @@ p{
     justify-content: flex-end;
     align-items: center;
 }
+.element:hover{
+    box-shadow: 0 0 5px .2rem #FFF;
+}
 .element img{
     width: 5em;
 }

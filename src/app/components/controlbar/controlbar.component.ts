@@ -23,7 +23,6 @@ export class ControlbarComponent implements OnInit, OnChanges {
   }
 
   setHourly(){
-    console.clear()
     this.variableData=this.currentForecastPackage.hourly;
   }
 

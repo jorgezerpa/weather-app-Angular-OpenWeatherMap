@@ -8,14 +8,11 @@ h2, h3{
     color: #fff;
 }
 h2{
-    font-size: 2em;
+    font-size: 4em;
 }
 h3{
-    font-size: 2.2em;
+    font-size: 3em;
 }
-img{
-     width: 6em;
-    }
 
                         /* cards*/
 .cards{

@@ -11,7 +11,6 @@ export class InfoComponent implements OnInit, OnChanges {
   @Input() currentForecastPackage:any;
   @Input() ubication?:string;
 
-image:string="../../../assets/icons/uve.svg";
   temperature?:number;
   date?:string;
   wind?:number;

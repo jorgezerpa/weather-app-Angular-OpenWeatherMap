@@ -6,10 +6,19 @@
 :host{
     margin: 0 auto;
     width: 100vw;
-    /* max-width: 1500px; */
+    max-width: 1500px;
     min-height: 100vh;
-    background: linear-gradient(225deg, #8C6BAE, #F0B5CE);
+    /* background: linear-gradient(225deg, #8C6BAE, #F0B5CE); */
+    background-image: url(../../../assets/bg-images/pexels-bri-schneiter-346529.jpg);
+    background-size: cover;
     display: flex;
+    animation: changeBG 30s linear infinite;
+}
+@keyframes changeBG{
+    0%{background-image: url(../../../assets/bg-images/pexels-bri-schneiter-346529.jpg);}
+    50%{background-image: url(../../../assets/bg-images/pexels-bri-schneiter-346529.jpg);}
+    60%{background-image: url(../../../assets/bg-images/pexels-pixabay-355508.jpg);}
+    90%{background-image: url(../../../assets/bg-images/pexels-pixabay-355508.jpg);}
 }
 input{
     color: #bbb;
@@ -20,23 +29,23 @@ input{
     opacity: .5;
     line-height: 1.5rem;
 }
-input + div{
-    margin-bottom: .2rem;
-    color: white;
-    display: none;
-    font-size: 1.5rem;
-    background-color: rgba(0, 0, 0, .5);
-}
-input + div div:hover{
-    background-color: #ccc;
-}
+
 input:focus{
     opacity: 1;
     background-color: rgba(255, 255, 255, 1);
     border: none;
 }
-input:focus + div{
-    display: block;
+/* input + div{visibility: hidden; transition: 1s;}
+input:focus + div{visibility: visible;} */
+
+.list_arr{
+    top: 1.5rem;
+    z-index: 1000;
+}
+
+.list{
+    color: #fff;
+    font-size: 1.2rem;
 }
 
 section{
@@ -50,7 +59,7 @@ section:nth-of-type(2){
     position: relative;
     width: 35%;
     margin-top: .1rem;
-    background: #C3A0C9;
+    background: linear-gradient(90deg, rgba(3,3,3,.4), rgba(5,5,5,.4));
     border: 1px solid #fff;
 }
 .app-info{

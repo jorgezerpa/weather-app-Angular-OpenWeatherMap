@@ -12,7 +12,7 @@ import { getPastDataService } from 'src/app/services/getPast.service';
 
 export class PrincipalComponent implements OnInit {
   date:number=1641728542;
-  city:string="venezuela";
+  city:string="roma";
   citiesToshow:any[]=[];
   cityPackage:any;
   currentForecastPackage:any;
@@ -27,24 +27,40 @@ export class PrincipalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-            this.location()
+            this.location(0)
     }
 
                 //get Info to distribute to Child components
-    location(){
+    location(i:number){
       this.getLocation.search(this.city).subscribe(city=>{
             this.cityPackage=city;
             this.citiesToshow=[];
-            for(let i=0; i<5; i++)this.citiesToshow.push(city[i]);
-            console.log(this.citiesToshow);
-            this.city=city[0].name;
-            this.getCurrentForecast.getCurrent(city[0].lat, city[0].lon).subscribe(data=>{
+            this.citiesToshow=city;
+            this.city=city[i].name;
+            this.getCurrentForecast.getCurrent(city[i].lat, city[i].lon).subscribe(data=>{
                 this.currentForecastPackage=data;
             })
-            this.getPast.getPast(city[0].lat, city[0].lon, this.date-86400).subscribe(data=>{
+            this.getPast.getPast(city[i].lat, city[i].lon, this.date-86400).subscribe(data=>{
                 this.historicalPackage=data;
             })
       })
     }
+
+    showList(){
+      this.getLocation.search(this.city).subscribe(data=>{
+        this.citiesToshow=[];
+        this.citiesToshow=data;
+        console.log(this.citiesToshow);
+      })
+   }
+
+   selectSearch(id:number){
+     for(let i=0; i<5; i++){
+        if(id==i){
+        this.city=this.citiesToshow[i].name;
+        this.location(i)
+      }
+     }
+   }
   
 }

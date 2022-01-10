@@ -1,5 +1,10 @@
 <section>
-<input type="text" [(ngModel)]="city" (change)="location()">   
+<input type="text" [(ngModel)]="city" (ngModelChange)="showList()" placeholder="BUSCAR"> 
+<div *ngIf="citiesToshow.length>0" class="list_arr">
+    <div *ngFor="let place of citiesToshow; index as i"
+     class="list" (click)="selectSearch(i)">{{place.name}} {{place.country}}</div>  
+</div>
+
     <app-info class="app-info"
         [ubication]="city"
         [currentForecastPackage]="currentForecastPackage"

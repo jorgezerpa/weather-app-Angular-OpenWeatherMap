@@ -12,6 +12,29 @@
     font-family: Roboto;
     src: url(assets/fonts/Roboto/Roboto-Regular.ttf);
 }
+.bg{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: .7;
+    filter: blur(100px);
+    z-index: -1000;
+}
+body{
+    width: 100vw;
+    background-image: url(assets/bg-images/pexels-bri-schneiter-346529.jpg);
+    background-size: cover;
+    animation: changeBG 30s linear infinite;
+}
+@keyframes changeBG{
+    0%{background-image: url(assets/bg-images/pexels-bri-schneiter-346529.jpg);}
+    50%{background-image: url(assets/bg-images/pexels-bri-schneiter-346529.jpg);}
+    60%{background-image: url(assets/bg-images/pexels-pixabay-355508.jpg);}
+    90%{background-image: url(assets/bg-images/pexels-pixabay-355508.jpg);}
+}
 h2, h3, p{
     text-shadow: .3px .3px #CCC;
 }
